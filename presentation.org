@@ -19,7 +19,6 @@
 - 100% interoperabel mit Java
 - Structured Concurrency (Coroutines)
 - Fullstack Development
-- Gute Wahl für die Provinzial
 
 #+BEGIN_NOTES
 - entwickelt von Jetbrains (Intellij), gepusht durch Google
@@ -37,13 +36,7 @@
 
 - Concurrency ohne async await
 
-- Kotlin kann auch zu JS und nativem Code compilen
-
-- Gut für die Provi weil:
-- Relativ einfach für Java Programmierer zu lernen
-- deutliche Reduktion von Crashes in Produktion
-- verbesserte Entwickler Produktität
-- kann einfach in bestehende Projekte eingebaut werden
+- Kotlin kann auch zu JS und nativem Code compilen (auch mit frameworks wie react js)
 #+END_NOTES
 
 ** Zitat von developer.android.com/kotlin
@@ -55,40 +48,14 @@
 Schreib bessere Android apps schneller mit Kotlin. Kotlin ist eine moderne statisch typisierte
 Programmiersprache, die von mehr als 60% aller professionellen Android Entwickler benutzt wird
 und dabei hilft die Produktität, Entwickler Zufriedenheit und Code Sicherheit zu verbessern.
+
 #+END_NOTES
 
-** Beispiel von kotlinlang.org: Spring Boot
-#+begin_src kotlin
-@SpringBootApplication
-class DemoApplication
-
-@RestController
-class MessageResource {
-   @GetMapping
-   fun index(): List<Message> = listOf(
-      Message("1", "Hello!"),
-      Message("2", "Bonjour!"),
-      Message("3", "Privet!"),
-   )
-}
-
-data class Message(val id: String?, val text: String)
-#+end_src
-
-** Beispiel von kotlinlang.org: React
-#+begin_src kotlin
-import react.*
-import react.dom.*
-import kotlinx.html.js.onClickFunction
-
-val counter = functionalComponent<Props> {
-   val (count, setCount) = useState(0)
-   button {
-      attrs.onClickFunction = { setCount(count + 1) }
-      +count.toString()
-   }
-}
-#+end_src
+** Gut geeignet für die Provinzial
+- Relativ einfach für Java Programmierer zu lernen
+- deutliche Reduktion von Crashes in Produktion
+- verbesserte Entwickler Produktität
+- kann einfach in bestehende Projekte eingebaut werden
 
 * Geschichte
 ** Jetbrains 2010
