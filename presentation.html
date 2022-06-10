@@ -22,68 +22,164 @@
 </section>
 
 <section>
-<section id="slide-org2a38b06">
-<h2 id="org2a38b06"><span class="section-number-2">1.</span> Sachen zu erwähnen</h2>
+<section id="slide-orgb55463c">
+<h2 id="orgb55463c"><span class="section-number-2">1.</span> Dieser Vortrag</h2>
 <div class="outline-text-2" id="text-1">
 </div>
 </section>
-<section id="slide-orgc88d354">
-<h3 id="orgc88d354"><span class="section-number-3">1.1.</span> Funktionale und OO Programmierung in einem</h3>
-</section>
-<section id="slide-orgcf689a5">
-<h3 id="orgcf689a5"><span class="section-number-3">1.2.</span> volle Java interop</h3>
-</section>
-<section id="slide-orgeeb9a10">
-<h3 id="orgeeb9a10"><span class="section-number-3">1.3.</span> default Android sprache</h3>
-</section>
-<section id="slide-orgbef73df">
-<h3 id="orgbef73df"><span class="section-number-3">1.4.</span> Null safety</h3>
-</section>
-<section id="slide-org02cd54f">
-<h3 id="org02cd54f"><span class="section-number-3">1.5.</span> DSL support</h3>
-</section>
-<section id="slide-orgd7c0ec3">
-<h3 id="orgd7c0ec3"><span class="section-number-3">1.6.</span> erweiterungen für java stdlib (extension methods generell)</h3>
+<section id="slide-orgcc7ed0a">
+<h3 id="orgcc7ed0a"><span class="section-number-3">1.1.</span> Basiert auf &ldquo;Kotlin in Action&rdquo;</h3>
 
-</section>
-</section>
-<section>
-<section id="slide-orge6ef272">
-<h2 id="orge6ef272"><span class="section-number-2">2.</span> Dieser Vortrag</h2>
-<div class="outline-text-2" id="text-2">
-</div>
-</section>
-<section id="slide-org3c1f153">
-<h3 id="org3c1f153"><span class="section-number-3">2.1.</span> Basiert auf &ldquo;Kotlin in Action&rdquo;</h3>
-
-<div id="orga97afe7" class="figure">
+<div id="orga54ab44" class="figure">
 <p><img src="./kotlin-in-action.jpg" alt="kotlin-in-action.jpg" />
 </p>
 </div>
 </section>
-<section id="slide-org24e658c">
-<h3 id="org24e658c"><span class="section-number-3">2.2.</span> Speziell für Java Programmierer</h3>
+<section id="slide-orgba9c57d">
+<h3 id="orgba9c57d"><span class="section-number-3">1.2.</span> Speziell für Java Programmierer</h3>
+</section>
+<section id="slide-org21600d4">
+<h3 id="org21600d4"><span class="section-number-3">1.3.</span> Generiert aus Org Dokument</h3>
+<ul>
+<li>Fast alle Code Beispiele sind editierbar und ausführbar</li>
+<li>Kann auch einfach als Text gelesen werden oder zu PDF generiert</li>
+
+</ul>
 
 </section>
 </section>
 <section>
-<section id="slide-orgf74c857">
-<h2 id="orgf74c857"><span class="section-number-2">3.</span> Geschichte</h2>
+<section id="slide-orga32a3e9">
+<h2 id="orga32a3e9"><span class="section-number-2">2.</span> Warum Kotlin?</h2>
+<ul>
+<li>Stabile und verbreitete Sprache</li>
+<li>Eleganter und Kompakter Code</li>
+<li>Keine NullPointerExceptions mehr</li>
+<li>100% interoperabel mit Java</li>
+<li>Structured Concurrency (Coroutines)</li>
+<li>Fullstack Development</li>
+<li>Gute Wahl für die Provinzial</li>
+
+</ul>
+
+<aside class="notes">
+<ul>
+<li>entwickelt von Jetbrains (Intellij), gepusht durch Google</li>
+<li>default Sprache für Android development</li>
+
+<li>Gute Mischung aus OOP und funktionaler Programmierung</li>
+<li>DSL support (nicht im Vortrag)</li>
+<li>Erweiterungen der Java stdlib für mehr Komfort</li>
+
+<li>als ich noch bei Kosmos war: NullPointerExceptions häufigster Absturzgrund</li>
+<li>nach Google: Android apps die Kotlin benutzen crashen im Schnitt 20% weniger!!</li>
+
+<li>kann einfach als Dependency in bestehendes Maven/gradle Projekt</li>
+<li>muss also nichtmal installiert werden</li>
+
+<li>Concurrency ohne async await</li>
+
+<li>Kotlin kann auch zu JS und nativem Code compilen</li>
+
+<li>Gut für die Provi weil:</li>
+<li>Relativ einfach für Java Programmierer zu lernen</li>
+<li>deutliche Reduktion von Crashes in Produktion</li>
+<li>verbesserte Entwickler Produktität</li>
+<li>kann einfach in bestehende Projekte eingebaut werden</li>
+
+</ul>
+
+</aside>
+
+</section>
+<section id="slide-org4dc02cf">
+<h3 id="org4dc02cf"><span class="section-number-3">2.1.</span> Zitat von developer.android.com/kotlin</h3>
+<blockquote >
+<p>
+&ldquo;Write better Android apps faster with Kotlin. Kotlin is a modern statically typed programming language used by over 60% of professional Android developers that helps boost productivity, developer satisfaction, and code safety.&rdquo;
+</p>
+</blockquote>
+
+<aside class="notes">
+<p>
+Schreib bessere Android apps schneller mit Kotlin. Kotlin ist eine moderne statisch typisierte
+Programmiersprache, die von mehr als 60% aller professionellen Android Entwickler benutzt wird
+und dabei hilft die Produktität, Entwickler Zufriedenheit und Code Sicherheit zu verbessern.
+</p>
+
+</aside>
+
+</section>
+<section id="slide-orge846f8d">
+<h3 id="orge846f8d"><span class="section-number-3">2.2.</span> Beispiel von kotlinlang.org: Spring Boot</h3>
+<div class="org-src-container">
+
+<pre  class="src src-kotlin"   ><code trim>@<span style="color: #fabd2f;">SpringBootApplication</span>
+<span style="color: #fb4934;">class</span> <span style="color: #fabd2f;">DemoApplication</span>
+
+@<span style="color: #fabd2f;">RestController</span>
+<span style="color: #fb4934;">class</span> <span style="color: #fabd2f;">MessageResource</span> {
+   @<span style="color: #fabd2f;">GetMapping</span>
+   <span style="color: #fb4934;">fun</span> <span style="color: #b8bb26;">index</span>(): <span style="color: #fabd2f;">List&lt;Message&gt;</span> = listOf(
+      <span style="color: #fabd2f;">Message</span>(<span style="color: #b8bb26;">"1"</span>, <span style="color: #b8bb26;">"Hello!"</span>),
+      <span style="color: #fabd2f;">Message</span>(<span style="color: #b8bb26;">"2"</span>, <span style="color: #b8bb26;">"Bonjour!"</span>),
+      <span style="color: #fabd2f;">Message</span>(<span style="color: #b8bb26;">"3"</span>, <span style="color: #b8bb26;">"Privet!"</span>),
+   )
+}
+
+<span style="color: #fb4934;">data</span> <span style="color: #fb4934;">class</span> <span style="color: #fabd2f;">Message</span>(<span style="color: #fb4934;">val</span> <span style="color: #83a598;">id</span>: <span style="color: #fabd2f;">String?</span>, <span style="color: #fb4934;">val</span> <span style="color: #83a598;">text</span>: <span style="color: #fabd2f;">String</span>)
+</code></pre>
+</div>
+
+</section>
+<section id="slide-org8674de0">
+<h3 id="org8674de0"><span class="section-number-3">2.3.</span> Beispiel von kotlinlang.org: React</h3>
+<div class="org-src-container">
+
+<pre  class="src src-kotlin"   ><code trim><span style="color: #fb4934;">import</span> <span style="color: #b8bb26;">react.</span>*
+<span style="color: #fb4934;">import</span> <span style="color: #b8bb26;">react.dom.</span>*
+<span style="color: #fb4934;">import</span> <span style="color: #b8bb26;">kotlinx.html.js.onClickFunction</span>
+
+<span style="color: #fb4934;">val</span> <span style="color: #83a598;">counter</span> = functionalComponent&lt;<span style="color: #fabd2f;">Props&gt;</span> {
+   <span style="color: #fb4934;">val</span> (count, setCount) = useState(<span style="color: #d3869b; font-weight: bold;">0</span>)
+   button {
+      attrs.onClickFunction = { setCount(count + <span style="color: #d3869b; font-weight: bold;">1</span>) }
+      +count.toString()
+   }
+}
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org6da1532">
+<h2 id="org6da1532"><span class="section-number-2">3.</span> Geschichte</h2>
 <div class="outline-text-2" id="text-3">
 </div>
 </section>
-<section id="slide-orgefba6dd">
-<h3 id="orgefba6dd"><span class="section-number-3">3.1.</span> Jetbrains 2010</h3>
+<section id="slide-orgd92779f">
+<h3 id="orgd92779f"><span class="section-number-3">3.1.</span> Jetbrains 2010</h3>
 </section>
-<section id="slide-org3fe10ad">
-<h3 id="org3fe10ad"><span class="section-number-3">3.2.</span> IntelliJ Team war neidisch auf das Rider (C#) Team</h3>
+<section id="slide-org4b921b8">
+<h3 id="org4b921b8"><span class="section-number-3">3.2.</span> IntelliJ Team war neidisch auf das Rider (C#) Team</h3>
 <ul>
-<li>&ldquo;We were somewhat envious of our colleagues on the .NET team who were developing in C#, a modern, powerful, rapidly evolving language. But we didn’t see any language that we could use instead of Java&rdquo;</li>
+<li><p>
+&ldquo;We were somewhat envious of our colleagues on the .NET team who were developing in C#, a modern, powerful, rapidly evolving language. But we didn’t see any language that we could use instead of Java&rdquo;
+</p>
+<aside class="notes">
+<p>
+Wir waren ein bisschen neidisch auf unsere Kollegen im .NET team, die in C# entwickelt haben,
+einer modernen, mächtigen und sich schnell entwickelnden Sprache.
+Aber wir konnten keine andere Sprache finden die wir statt Java benutzen könnten.
+</p>
+
+</aside></li>
 
 </ul>
 </section>
-<section id="slide-orgf5ebcc9">
-<h3 id="orgf5ebcc9"><span class="section-number-3">3.3.</span> Anforderungen an Kotlin</h3>
+<section id="slide-org1a55cbb">
+<h3 id="org1a55cbb"><span class="section-number-3">3.3.</span> Anforderungen an Kotlin</h3>
 <ul>
 <li>statisch typisiert</li>
 <li>100% Kompatibilität mit bestehenden Java Bibliotheken</li>
@@ -93,13 +189,13 @@
 
 </ul>
 </section>
-<section id="slide-org66ee001">
-<h3 id="org66ee001"><span class="section-number-3">3.4.</span> Name: Insel vor St. Petersburg</h3>
+<section id="slide-orgbbc2c0f">
+<h3 id="orgbbc2c0f"><span class="section-number-3">3.4.</span> Name: Insel vor St. Petersburg</h3>
 </section>
 </section>
 <section>
-<section id="slide-org954adde">
-<h2 id="org954adde"><span class="section-number-2">4.</span> Einfaches Beispiel</h2>
+<section id="slide-org90002e6">
+<h2 id="org90002e6"><span class="section-number-2">4.</span> Einfaches Beispiel</h2>
 <div class="org-src-container">
 
 <pre  class="src src-kotlin"   ><code trim><span style="color: #fb4934;">data</span> <span style="color: #fb4934;">class</span> <span style="color: #fabd2f;">Person</span> (<span style="color: #fb4934;">val</span> <span style="color: #83a598;">name</span>: <span style="color: #fabd2f;">String</span>,
@@ -147,31 +243,31 @@ main()
 </section>
 </section>
 <section>
-<section id="slide-org457ddde">
-<h2 id="org457ddde"><span class="section-number-2">5.</span> Exkurs: Funktionale Programmierung</h2>
+<section id="slide-org3559c8e">
+<h2 id="org3559c8e"><span class="section-number-2">5.</span> Exkurs: Funktionale Programmierung</h2>
 <div class="outline-text-2" id="text-5">
 </div>
 </section>
-<section id="slide-orgb6df3a8">
-<h3 id="orgb6df3a8"><span class="section-number-3">5.1.</span> Konzepte</h3>
+<section id="slide-org1e11de2">
+<h3 id="org1e11de2"><span class="section-number-3">5.1.</span> Konzepte</h3>
 <div class="outline-text-3" id="text-5-1">
 </div>
 </section>
-<section id="slide-org6c6d06c">
-<h4 id="org6c6d06c"><span class="section-number-4">5.1.1.</span> First-class Funktionen</h4>
+<section id="slide-orgaec0474">
+<h4 id="orgaec0474"><span class="section-number-4">5.1.1.</span> First-class Funktionen</h4>
 <ul>
 <li>Funktionen können als Parameter übergeben werden</li>
 <li>Funktionen können als Rückgabewert benutzt werden</li>
 
 </ul>
 </section>
-<section id="slide-org04f7cc7">
-<h4 id="org04f7cc7"><span class="section-number-4">5.1.2.</span> Immutability</h4>
+<section id="slide-org1f63ad9">
+<h4 id="org1f63ad9"><span class="section-number-4">5.1.2.</span> Immutability</h4>
 <div class="outline-text-4" id="text-5-1-2">
 </div>
 <ol class="org-ol">
-<li><a id="orged622dc"></a>Objekte können nicht verändert werden (nur getter, keine setter)<br /></li>
-<li><a id="org9bbd90b"></a>Vorteile<br />
+<li><a id="orgfd257be"></a>Objekte können nicht verändert werden (nur getter, keine setter)<br /></li>
+<li><a id="org7988a50"></a>Vorteile<br />
 <ul>
 <li>deutlich einfacher zu handhaben -&gt; Zustand spielt keine Rolle</li>
 <li>einfacher zu testen</li>
@@ -181,16 +277,16 @@ main()
 </li>
 </ol>
 </section>
-<section id="slide-orgb6899bb">
-<h4 id="orgb6899bb"><span class="section-number-4">5.1.3.</span> Keine Seiteneffekte</h4>
+<section id="slide-org64de613">
+<h4 id="org64de613"><span class="section-number-4">5.1.3.</span> Keine Seiteneffekte</h4>
 <ul>
 <li>Funktionen sollten pur sein -&gt; bei Aufruf mit den selben Parametern immer das selbe Ergebnis</li>
 <li>Funktionen verändern nichts am Zustand der Anwendung</li>
 
 </ul>
 </section>
-<section id="slide-org81f891b">
-<h3 id="org81f891b"><span class="section-number-3">5.2.</span> Kotlin ist wesentlich fokussierter auf funktionale Programmierung als Java</h3>
+<section id="slide-org07dc8e5">
+<h3 id="org07dc8e5"><span class="section-number-3">5.2.</span> Kotlin ist wesentlich fokussierter auf funktionale Programmierung als Java</h3>
 <ul>
 <li>Java hat stream API, aber die Collections selber sind mutable</li>
 <li>Lambdas/Funktions Typen sind deutlich angenehmer in kotlin</li>
@@ -198,8 +294,8 @@ main()
 
 </ul>
 </section>
-<section id="slide-org6f351df">
-<h3 id="org6f351df"><span class="section-number-3">5.3.</span> Aber: Kotlin erzwingt keine funktionale Programmierung</h3>
+<section id="slide-orgd28d83b">
+<h3 id="orgd28d83b"><span class="section-number-3">5.3.</span> Aber: Kotlin erzwingt keine funktionale Programmierung</h3>
 <ul>
 <li>OOP oder imperativer code lässt sich genauso schreiben wie in Java wenn gewünscht</li>
 <li>das macht Kotlin zu einer guten Einstiegssprache um funktionale Konzepte zu lernen</li>
@@ -209,13 +305,13 @@ main()
 </section>
 </section>
 <section>
-<section id="slide-org4f27104">
-<h2 id="org4f27104"><span class="section-number-2">6.</span> Basics</h2>
+<section id="slide-org409d7fd">
+<h2 id="org409d7fd"><span class="section-number-2">6.</span> Basics</h2>
 <div class="outline-text-2" id="text-6">
 </div>
 </section>
-<section id="slide-orgdfcbac4">
-<h3 id="orgdfcbac4"><span class="section-number-3">6.1.</span> Funktionen und Variablen</h3>
+<section id="slide-orgfa31ab6">
+<h3 id="orgfa31ab6"><span class="section-number-3">6.1.</span> Funktionen und Variablen</h3>
 <div class="org-src-container">
 
 <pre  class="src src-kotlin"   ><code trim><span style="color: #fb4934;">fun</span> <span style="color: #b8bb26;">main</span>(args: <span style="color: #fabd2f;">Array&lt;String&gt;</span>) {
@@ -239,8 +335,8 @@ main()
 </aside>
 
 </section>
-<section id="slide-org7531598">
-<h3 id="org7531598"><span class="section-number-3">6.2.</span> Weiteres Beispiel</h3>
+<section id="slide-orgb858775">
+<h3 id="orgb858775"><span class="section-number-3">6.2.</span> Weiteres Beispiel</h3>
 <div class="org-src-container">
 
 <pre  class="src src-kotlin"   ><code trim><span style="color: #fb4934;">fun</span> <span style="color: #b8bb26;">max</span>(a: <span style="color: #fabd2f;">Int</span>, b: <span style="color: #fabd2f;">Int</span>): <span style="color: #fabd2f;">Int</span> {
@@ -258,8 +354,8 @@ max(<span style="color: #d3869b; font-weight: bold;">1</span>, <span style="colo
 </ul>
 
 </section>
-<section id="slide-org7fc23c0">
-<h3 id="org7fc23c0"><span class="section-number-3">6.3.</span> Kann sogar vereinfacht werden</h3>
+<section id="slide-org356e99b">
+<h3 id="org356e99b"><span class="section-number-3">6.3.</span> Kann sogar vereinfacht werden</h3>
 <div class="org-src-container">
 
 <pre  class="src src-kotlin"   ><code trim>
@@ -271,13 +367,13 @@ max(<span style="color: #d3869b; font-weight: bold;">1</span>, <span style="colo
 </div>
 
 </section>
-<section id="slide-orgd5e264c">
-<h3 id="orgd5e264c"><span class="section-number-3">6.4.</span> Variablen</h3>
+<section id="slide-org74b56bb">
+<h3 id="org74b56bb"><span class="section-number-3">6.4.</span> Variablen</h3>
 <div class="outline-text-3" id="text-6-4">
 </div>
 </section>
-<section id="slide-org3906640">
-<h4 id="org3906640"><span class="section-number-4">6.4.1.</span> Format: (val|var) Name(: Typ) = Wert</h4>
+<section id="slide-org047f962">
+<h4 id="org047f962"><span class="section-number-4">6.4.1.</span> Format: (val|var) Name(: Typ) = Wert</h4>
 <div class="org-src-container">
 
 <pre  class="src src-kotlin"   ><code trim><span style="color: #fb4934;">val</span> <span style="color: #83a598;">frage</span> = <span style="color: #b8bb26;">"Die ultimative Frage nach dem Leben,"</span> +
@@ -298,11 +394,11 @@ max(<span style="color: #d3869b; font-weight: bold;">1</span>, <span style="colo
 </aside>
 
 </section>
-<section id="slide-org95ebe5c">
-<h4 id="org95ebe5c"><span class="section-number-4">6.4.2.</span> Im Normalfall immer alles val(ue) machen</h4>
+<section id="slide-orgde93aec">
+<h4 id="orgde93aec"><span class="section-number-4">6.4.2.</span> Im Normalfall immer alles val(ue) machen</h4>
 </section>
-<section id="slide-org5c468c8">
-<h4 id="org5c468c8"><span class="section-number-4">6.4.3.</span> falls var(iablen) benötigt werden:</h4>
+<section id="slide-orge885997">
+<h4 id="orge885997"><span class="section-number-4">6.4.3.</span> falls var(iablen) benötigt werden:</h4>
 <div class="org-src-container">
 
 <pre  class="src src-kotlin"   ><code trim><span style="color: #fb4934;">var</span> <span style="color: #83a598;">message</span> = <span style="color: #b8bb26;">"test"</span>
@@ -312,8 +408,8 @@ message
 </code></pre>
 </div>
 </section>
-<section id="slide-orgb50fab5">
-<h4 id="orgb50fab5"><span class="section-number-4">6.4.4.</span> val != immutable</h4>
+<section id="slide-orgd39881d">
+<h4 id="orgd39881d"><span class="section-number-4">6.4.4.</span> val != immutable</h4>
 <div class="org-src-container">
 
 <pre  class="src src-kotlin"   ><code trim><span style="color: #fb4934;">val</span> <span style="color: #83a598;">sprachen</span> = arrayListOf(<span style="color: #b8bb26;">"Java"</span>, <span style="color: #b8bb26;">"Clojure"</span>, <span style="color: #b8bb26;">"Scala"</span>)
@@ -330,8 +426,8 @@ sprachen.joinToString(<span style="color: #b8bb26;">", "</span>)
 </div>
 
 </section>
-<section id="slide-orgb8066a6">
-<h4 id="orgb8066a6"><span class="section-number-4">6.4.5.</span> Kotlin verwendet aber normalerweise immutable Datenstrukturen</h4>
+<section id="slide-org431af2a">
+<h4 id="org431af2a"><span class="section-number-4">6.4.5.</span> Kotlin verwendet aber normalerweise immutable Datenstrukturen</h4>
 <div class="org-src-container">
 
 <pre  class="src src-kotlin"   ><code trim><span style="color: #fb4934;">val</span> <span style="color: #83a598;">sprachen</span> = listOf(<span style="color: #b8bb26;">"Java"</span>, <span style="color: #b8bb26;">"Clojure"</span>, <span style="color: #b8bb26;">"Scala"</span>)
@@ -342,8 +438,8 @@ sprachen.joinToString(<span style="color: #b8bb26;">", "</span>)
 </div>
 
 </section>
-<section id="slide-org5e35526">
-<h3 id="org5e35526"><span class="section-number-3">6.5.</span> String templating</h3>
+<section id="slide-orgd9ee299">
+<h3 id="orgd9ee299"><span class="section-number-3">6.5.</span> String templating</h3>
 <div class="org-src-container">
 
 <pre  class="src src-kotlin"   ><code trim>
@@ -376,13 +472,13 @@ sprachen.joinToString(<span style="color: #b8bb26;">", "</span>)
 </code></pre>
 </div>
 </section>
-<section id="slide-org7515cb2">
-<h3 id="org7515cb2"><span class="section-number-3">6.6.</span> Objektorientierung</h3>
+<section id="slide-org03172e8">
+<h3 id="org03172e8"><span class="section-number-3">6.6.</span> Objektorientierung</h3>
 <div class="outline-text-3" id="text-6-6">
 </div>
 </section>
-<section id="slide-orgd60f856">
-<h4 id="orgd60f856"><span class="section-number-4">6.6.1.</span> Java Klasse</h4>
+<section id="slide-org426f9c6">
+<h4 id="org426f9c6"><span class="section-number-4">6.6.1.</span> Java Klasse</h4>
 <div class="org-src-container">
 
 <pre  class="src src-java"   ><code trim><span style="color: #fb4934;">public</span> <span style="color: #fb4934;">class</span> <span style="color: #fabd2f;">Person</span> <span style="color: #fe8019;">{</span>
@@ -404,8 +500,8 @@ sprachen.joinToString(<span style="color: #b8bb26;">", "</span>)
 </div>
 
 </section>
-<section id="slide-orgc992cdc">
-<h4 id="orgc992cdc"><span class="section-number-4">6.6.2.</span> Java Aufruf</h4>
+<section id="slide-org11fc5cb">
+<h4 id="org11fc5cb"><span class="section-number-4">6.6.2.</span> Java Aufruf</h4>
 <div class="org-src-container">
 
 <pre  class="src src-java"   ><code trim><span style="color: #fb4934;">public</span> <span style="color: #fb4934;">static</span> <span style="color: #fabd2f;">void</span> <span style="color: #b8bb26;">printStatus</span><span style="color: #fe8019;">(</span><span style="color: #fabd2f;">Person</span> <span style="color: #83a598;">person</span><span style="color: #fe8019;">)</span> <span style="color: #fe8019;">{</span>
@@ -433,8 +529,8 @@ sprachen.joinToString(<span style="color: #b8bb26;">", "</span>)
 </div>
 
 </section>
-<section id="slide-org64a1acd">
-<h4 id="org64a1acd"><span class="section-number-4">6.6.3.</span> Kotlin ohne Accessor</h4>
+<section id="slide-orgb192c7d">
+<h4 id="orgb192c7d"><span class="section-number-4">6.6.3.</span> Kotlin ohne Accessor</h4>
 <div class="org-src-container">
 
 <pre  class="src src-kotlin"   ><code trim><span style="color: #fb4934;">data</span> <span style="color: #fb4934;">class</span> <span style="color: #fabd2f;">Person</span>(<span style="color: #fb4934;">val</span> <span style="color: #83a598;">name</span>: <span style="color: #fabd2f;">String</span>,
@@ -461,8 +557,8 @@ Bob ist verheiratet
 </div>
 
 </section>
-<section id="slide-org072724c">
-<h4 id="org072724c"><span class="section-number-4">6.6.4.</span> Kotlin mit Accessor</h4>
+<section id="slide-org105a485">
+<h4 id="org105a485"><span class="section-number-4">6.6.4.</span> Kotlin mit Accessor</h4>
 <div class="org-src-container">
 
 <pre  class="src src-kotlin"   ><code trim><span style="color: #fb4934;">class</span> <span style="color: #fabd2f;">Person</span>(<span style="color: #fb4934;">val</span> <span style="color: #83a598;">name</span>: <span style="color: #fabd2f;">String</span>,
@@ -493,16 +589,16 @@ printStatus(person)
 <div class="org-src-container">
 
 <pre  class="src src-console"   ><code trim>isVerheiratet hat wert false
-Bob ist nicht  verheiratet
+Bob ist nicht verheiratet
 verheiratet = true
 isVerheiratet hat wert true
-Bob ist  verheiratet
+Bob ist verheiratet
 </code></pre>
 </div>
 
 </section>
-<section id="slide-org9cdb679">
-<h4 id="org9cdb679"><span class="section-number-4">6.6.5.</span> Accessor können auch Werte berechnen</h4>
+<section id="slide-org99f3e5a">
+<h4 id="org99f3e5a"><span class="section-number-4">6.6.5.</span> Accessor können auch Werte berechnen</h4>
 <div class="org-src-container">
 
 <pre  class="src src-kotlin"   ><code trim><span style="color: #fb4934;">class</span> <span style="color: #fabd2f;">Rechteck</span>(<span style="color: #fb4934;">val</span> <span style="color: #83a598;">breite</span>: <span style="color: #fabd2f;">Int</span>, <span style="color: #fb4934;">val</span> <span style="color: #83a598;">hoehe</span>: <span style="color: #fabd2f;">Int</span>) {
@@ -525,13 +621,13 @@ println(<span style="color: #fabd2f;">Rechteck</span>(<span style="color: #d3869
 </section>
 </section>
 <section>
-<section id="slide-orgd89e756">
-<h2 id="orgd89e756"><span class="section-number-2">7.</span> Code Struktur (Pakete und Ordner)</h2>
+<section id="slide-org495ebf9">
+<h2 id="org495ebf9"><span class="section-number-2">7.</span> Code Struktur (Pakete und Ordner)</h2>
 <div class="outline-text-2" id="text-7">
 </div>
 </section>
-<section id="slide-org640d90b">
-<h3 id="org640d90b"><span class="section-number-3">7.1.</span> package/import Statements</h3>
+<section id="slide-org1ae4dee">
+<h3 id="org1ae4dee"><span class="section-number-3">7.1.</span> package/import Statements</h3>
 <div class="org-src-container">
 
 <pre  class="src src-kotlin"   ><code trim><span style="color: #fb4934;">package</span> <span style="color: #b8bb26;">geometrie.formen</span>
@@ -553,17 +649,17 @@ println(zufaelligesRechteck().isQuadrat)
 </div>
 
 </section>
-<section id="slide-orgde48773">
-<h3 id="orgde48773"><span class="section-number-3">7.2.</span> Package vs Ordner</h3>
+<section id="slide-org4495c3c">
+<h3 id="org4495c3c"><span class="section-number-3">7.2.</span> Package vs Ordner</h3>
 
-<div id="orgaafe527" class="figure">
+<div id="org4379df8" class="figure">
 <p><img src="./java-packages.png" alt="java-packages.png" />
 </p>
 <p><span class="figure-number">Figure 1: </span>In Java müssen packages die Ordner Struktur reflektieren</p>
 </div>
 
 
-<div id="org0fd14d7" class="figure">
+<div id="orge68ec0a" class="figure">
 <p><img src="./kotlin-packages.png" alt="kotlin-packages.png" />
 </p>
 <p><span class="figure-number">Figure 2: </span>In Kotlin ist das nicht der Fall</p>
@@ -572,13 +668,13 @@ println(zufaelligesRechteck().isQuadrat)
 </section>
 </section>
 <section>
-<section id="slide-orgeacd5e1">
-<h2 id="orgeacd5e1"><span class="section-number-2">8.</span> Entscheidungen: enums &amp; when</h2>
+<section id="slide-org2ca20b3">
+<h2 id="org2ca20b3"><span class="section-number-2">8.</span> Entscheidungen: enums &amp; when</h2>
 <div class="outline-text-2" id="text-8">
 </div>
 </section>
-<section id="slide-orgf52ad0d">
-<h3 id="orgf52ad0d"><span class="section-number-3">8.1.</span> Enums wie in Java</h3>
+<section id="slide-orge3eaa7d">
+<h3 id="orge3eaa7d"><span class="section-number-3">8.1.</span> Enums wie in Java</h3>
 <div class="org-src-container">
 
 <pre  class="src src-kotlin"   ><code trim><span style="color: #fb4934;">enum</span> <span style="color: #fb4934;">class</span> <span style="color: #fabd2f;">Farbe</span> {
@@ -588,8 +684,8 @@ println(zufaelligesRechteck().isQuadrat)
 </div>
 
 </section>
-<section id="slide-org3bb3310">
-<h3 id="org3bb3310"><span class="section-number-3">8.2.</span> Können auch Felder haben</h3>
+<section id="slide-org5419912">
+<h3 id="org5419912"><span class="section-number-3">8.2.</span> Können auch Felder haben</h3>
 <div class="org-src-container">
 
 <pre  class="src src-kotlin"   ><code trim><span style="color: #fb4934;">enum</span> <span style="color: #fb4934;">class</span> <span style="color: #fabd2f;">Farbe</span> (<span style="color: #fb4934;">val</span> <span style="color: #83a598;">r</span>: <span style="color: #fabd2f;">Int</span>, <span style="color: #fb4934;">val</span> <span style="color: #83a598;">g</span>: <span style="color: #fabd2f;">Int</span>, <span style="color: #fb4934;">val</span> <span style="color: #83a598;">b</span>: <span style="color: #fabd2f;">Int</span>) {
@@ -608,13 +704,13 @@ println(zufaelligesRechteck().isQuadrat)
 </div>
 
 </section>
-<section id="slide-orgee4b105">
-<h3 id="orgee4b105"><span class="section-number-3">8.3.</span> &rsquo;when&rsquo; in Kombination mit enums</h3>
+<section id="slide-org3d371f6">
+<h3 id="org3d371f6"><span class="section-number-3">8.3.</span> &rsquo;when&rsquo; in Kombination mit enums</h3>
 <div class="outline-text-3" id="text-8-3">
 </div>
 </section>
-<section id="slide-orge1b3ec4">
-<h4 id="orge1b3ec4"><span class="section-number-4">8.3.1.</span> when ist wie switch auf Steroiden</h4>
+<section id="slide-org2576c3a">
+<h4 id="org2576c3a"><span class="section-number-4">8.3.1.</span> when ist wie switch auf Steroiden</h4>
 <div class="org-src-container">
 
 <pre  class="src src-kotlin"   ><code trim><span style="color: #fb4934;">fun</span> <span style="color: #b8bb26;">getBeispielPflanze</span>(farbe: <span style="color: #fabd2f;">Farbe</span>) = <span style="color: #fb4934;">when</span> (farbe) {
@@ -631,8 +727,8 @@ println(zufaelligesRechteck().isQuadrat)
 </div>
 
 </section>
-<section id="slide-orgf0206f0">
-<h4 id="orgf0206f0"><span class="section-number-4">8.3.2.</span> Bedingungen können mit &rsquo;,&rsquo; verbunden werden</h4>
+<section id="slide-org6a9526a">
+<h4 id="org6a9526a"><span class="section-number-4">8.3.2.</span> Bedingungen können mit &rsquo;,&rsquo; verbunden werden</h4>
 <div class="org-src-container">
 
 <pre  class="src src-kotlin"   ><code trim><span style="color: #fb4934;">fun</span> <span style="color: #b8bb26;">getWaerme</span>(farbe: <span style="color: #fabd2f;">Farbe</span>) = <span style="color: #fb4934;">when</span> (farbe) {
@@ -643,8 +739,8 @@ println(zufaelligesRechteck().isQuadrat)
 </code></pre>
 </div>
 </section>
-<section id="slide-orgb8108a1">
-<h4 id="orgb8108a1"><span class="section-number-4">8.3.3.</span> &rsquo;when&rsquo; funktioniert aber mit allen Objekten</h4>
+<section id="slide-org5f1000b">
+<h4 id="org5f1000b"><span class="section-number-4">8.3.3.</span> &rsquo;when&rsquo; funktioniert aber mit allen Objekten</h4>
 <div class="org-src-container">
 
 <pre  class="src src-kotlin"   ><code trim><span style="color: #fb4934;">fun</span> <span style="color: #b8bb26;">mix</span>(f1: <span style="color: #fabd2f;">Farbe</span>, f2: <span style="color: #fabd2f;">Farbe</span>) = <span style="color: #fb4934;">when</span>(setOf(f1, f2)) {
@@ -668,8 +764,8 @@ mix(<span style="color: #fabd2f;">Farbe.BLAU</span>, <span style="color: #fabd2f
 
 </aside>
 </section>
-<section id="slide-org2cdf4af">
-<h4 id="org2cdf4af"><span class="section-number-4">8.3.4.</span> &rsquo;when&rsquo; klappt auch ohne Argument</h4>
+<section id="slide-orgfbe5a4c">
+<h4 id="orgfbe5a4c"><span class="section-number-4">8.3.4.</span> &rsquo;when&rsquo; klappt auch ohne Argument</h4>
 <div class="org-src-container">
 
 <pre  class="src src-kotlin"   ><code trim><span style="color: #fb4934;">fun</span> <span style="color: #b8bb26;">mixPerformant</span>(f1: <span style="color: #fabd2f;">Farbe</span>, f2: <span style="color: #fabd2f;">Farbe</span>) = <span style="color: #fb4934;">when</span> {
@@ -696,16 +792,16 @@ mixPerformant(<span style="color: #fabd2f;">Farbe.BLAU</span>, <span style="colo
 
 </aside>
 </section>
-<section id="slide-orgf6990a8">
-<h3 id="orgf6990a8"><span class="section-number-3">8.4.</span> Smart casts</h3>
+<section id="slide-org569c67f">
+<h3 id="org569c67f"><span class="section-number-3">8.4.</span> Smart casts</h3>
 <div class="outline-text-3" id="text-8-4">
 </div>
 </section>
-<section id="slide-org4127d8e">
-<h4 id="org4127d8e"><span class="section-number-4">8.4.1.</span> Kombination von Type Check und Cast</h4>
+<section id="slide-org5ba0360">
+<h4 id="org5ba0360"><span class="section-number-4">8.4.1.</span> Kombination von Type Check und Cast</h4>
 </section>
-<section id="slide-org35d97bb">
-<h4 id="org35d97bb"><span class="section-number-4">8.4.2.</span> Beispiel: Simpler Interpreter</h4>
+<section id="slide-org6ab2cd0">
+<h4 id="org6ab2cd0"><span class="section-number-4">8.4.2.</span> Beispiel: Simpler Interpreter</h4>
 <div class="org-src-container">
 
 <pre  class="src src-kotlin"   ><code trim><span style="color: #fb4934;">interface</span> <span style="color: #fabd2f;">Expr</span>
@@ -723,22 +819,22 @@ mixPerformant(<span style="color: #fabd2f;">Farbe.BLAU</span>, <span style="colo
 
 </aside>
 </section>
-<section id="slide-org87f1a44">
-<h4 id="org87f1a44"><span class="section-number-4">8.4.3.</span> Simpler AST</h4>
+<section id="slide-orgf28fb76">
+<h4 id="orgf28fb76"><span class="section-number-4">8.4.3.</span> Simpler AST</h4>
 <div class="org-src-container">
 
 <pre  class="src src-kotlin"   ><code trim><span style="color: #fabd2f;">Plus</span>(<span style="color: #fabd2f;">Plus</span>(<span style="color: #fabd2f;">Zahl</span>(<span style="color: #d3869b; font-weight: bold;">1</span>), <span style="color: #fabd2f;">Zahl</span>(<span style="color: #d3869b; font-weight: bold;">2</span>)), <span style="color: #fabd2f;">Zahl</span>(<span style="color: #d3869b; font-weight: bold;">4</span>))
 </code></pre>
 </div>
 
-<div id="orgee98730" class="figure">
+<div id="orgb657572" class="figure">
 <p><img src="./tree.png" alt="tree.png" />
 </p>
 <p><span class="figure-number">Figure 3: </span>Ausdruck als Baum</p>
 </div>
 </section>
-<section id="slide-orgc2a6d6d">
-<h4 id="orgc2a6d6d"><span class="section-number-4">8.4.4.</span> Evaluierung ohne when</h4>
+<section id="slide-org0facfd2">
+<h4 id="org0facfd2"><span class="section-number-4">8.4.4.</span> Evaluierung ohne when</h4>
 <div class="org-src-container">
 
 <pre  class="src src-kotlin"   ><code trim><span style="color: #fb4934;">fun</span> <span style="color: #b8bb26;">eval</span>(e: <span style="color: #fabd2f;">Expr</span>): <span style="color: #fabd2f;">Int</span> {
@@ -766,8 +862,8 @@ eval(<span style="color: #fabd2f;">Plus</span>(<span style="color: #fabd2f;">Plu
 
 </aside>
 </section>
-<section id="slide-orgd636666">
-<h4 id="orgd636666"><span class="section-number-4">8.4.5.</span> Schönere Lösung mit &rsquo;when&rsquo;</h4>
+<section id="slide-org7450d17">
+<h4 id="org7450d17"><span class="section-number-4">8.4.5.</span> Schönere Lösung mit &rsquo;when&rsquo;</h4>
 <div class="org-src-container">
 
 <pre  class="src src-kotlin"   ><code trim><span style="color: #fb4934;">fun</span> <span style="color: #b8bb26;">eval</span>(e: <span style="color: #fabd2f;">Expr</span>): <span style="color: #fabd2f;">Int</span> = <span style="color: #fb4934;">when</span>(e) {
@@ -781,8 +877,8 @@ eval(<span style="color: #fabd2f;">Plus</span>(<span style="color: #fabd2f;">Plu
 </code></pre>
 </div>
 </section>
-<section id="slide-org13e8ddd">
-<h4 id="org13e8ddd"><span class="section-number-4">8.4.6.</span> Eval branches können auch Blöcke sein</h4>
+<section id="slide-org898a1fc">
+<h4 id="org898a1fc"><span class="section-number-4">8.4.6.</span> Eval branches können auch Blöcke sein</h4>
 <div class="org-src-container">
 
 <pre  class="src src-kotlin"   ><code trim><span style="color: #fb4934;">fun</span> <span style="color: #b8bb26;">evalMitLog</span>(e: <span style="color: #fabd2f;">Expr</span>): <span style="color: #fabd2f;">Int</span> = <span style="color: #fb4934;">when</span>(e) {
@@ -828,13 +924,13 @@ Zahl: 4
 </section>
 </section>
 <section>
-<section id="slide-org9d0bbee">
-<h2 id="org9d0bbee"><span class="section-number-2">9.</span> Iterieren: &rsquo;while&rsquo; und &rsquo;for&rsquo;</h2>
+<section id="slide-orgc80e066">
+<h2 id="orgc80e066"><span class="section-number-2">9.</span> Iterieren: &rsquo;while&rsquo; und &rsquo;for&rsquo;</h2>
 <div class="outline-text-2" id="text-9">
 </div>
 </section>
-<section id="slide-org38476d2">
-<h3 id="org38476d2"><span class="section-number-3">9.1.</span> while genau wie in Java</h3>
+<section id="slide-org68fa8bb">
+<h3 id="org68fa8bb"><span class="section-number-3">9.1.</span> while genau wie in Java</h3>
 <div class="org-src-container">
 
 <pre  class="src src-kotlin"   ><code trim><span style="color: #fb4934;">var</span> <span style="color: #83a598;">i</span> = <span style="color: #d3869b; font-weight: bold;">0</span>
@@ -845,11 +941,11 @@ Zahl: 4
 </code></pre>
 </div>
 </section>
-<section id="slide-orgde09d7a">
-<h3 id="orgde09d7a"><span class="section-number-3">9.2.</span> for basiert auf Iterators</h3>
+<section id="slide-orgec3646e">
+<h3 id="orgec3646e"><span class="section-number-3">9.2.</span> for basiert auf Iterators</h3>
 </section>
-<section id="slide-org0327d03">
-<h3 id="org0327d03"><span class="section-number-3">9.3.</span> Iterator über aufeinanderfolgende Zahlen: range</h3>
+<section id="slide-org5ad31cb">
+<h3 id="org5ad31cb"><span class="section-number-3">9.3.</span> Iterator über aufeinanderfolgende Zahlen: range</h3>
 <div class="org-src-container">
 
 <pre  class="src src-kotlin"   ><code trim><span style="color: #928374;">// </span><span style="color: #928374;">10 inklusive</span>
@@ -859,8 +955,8 @@ Zahl: 4
 </code></pre>
 </div>
 </section>
-<section id="slide-orgf009b72">
-<h3 id="orgf009b72"><span class="section-number-3">9.4.</span> for Schleife mit Range</h3>
+<section id="slide-org17995df">
+<h3 id="org17995df"><span class="section-number-3">9.4.</span> for Schleife mit Range</h3>
 <div class="org-src-container">
 
 <pre  class="src src-kotlin"   ><code trim><span style="color: #fb4934;">fun</span> <span style="color: #b8bb26;">fizzBuzz</span> (i: <span style="color: #fabd2f;">Int</span>) = <span style="color: #fb4934;">when</span> {
@@ -883,8 +979,8 @@ Zahl: 4
 </div>
 
 </section>
-<section id="slide-orgbce4088">
-<h3 id="orgbce4088"><span class="section-number-3">9.5.</span> Kann auch andere Schrittweite als +1</h3>
+<section id="slide-org447571b">
+<h3 id="org447571b"><span class="section-number-3">9.5.</span> Kann auch andere Schrittweite als +1</h3>
 <div class="org-src-container">
 
 <pre  class="src src-kotlin"   ><code trim><span style="color: #fb4934;">for</span> (i <span style="color: #fb4934;">in</span> <span style="color: #d3869b; font-weight: bold;">100</span> downTo <span style="color: #d3869b; font-weight: bold;">1</span> step <span style="color: #d3869b; font-weight: bold;">2</span>) {
@@ -901,8 +997,8 @@ Zahl: 4
 
 </aside>
 </section>
-<section id="slide-org30d6d4c">
-<h3 id="org30d6d4c"><span class="section-number-3">9.6.</span> Funktioniert auch mit anderen Daten als Int Ranges</h3>
+<section id="slide-org3cd6830">
+<h3 id="org3cd6830"><span class="section-number-3">9.6.</span> Funktioniert auch mit anderen Daten als Int Ranges</h3>
 <div class="org-src-container">
 
 <pre  class="src src-kotlin"   ><code trim><span style="color: #fb4934;">import</span> <span style="color: #b8bb26;">java.util.TreeMap</span>
@@ -941,33 +1037,13 @@ F = 1000110
 
 </aside>
 </section>
-<section id="slide-org34c19a2">
-<h3 id="org34c19a2"><span class="section-number-3">9.7.</span> Nützlich falls man mit Index über eine Collection iterieren möchte</h3>
-<div class="org-src-container">
-
-<pre  class="src src-kotlin"   ><code trim><span style="color: #fb4934;">val</span> <span style="color: #83a598;">liste</span> = arrayListOf(<span style="color: #b8bb26;">"null"</span>, <span style="color: #b8bb26;">"eins"</span>, <span style="color: #b8bb26;">"zwei"</span>, <span style="color: #b8bb26;">"drei"</span>)
-<span style="color: #fb4934;">for</span> ((index, element) <span style="color: #fb4934;">in</span> liste.withIndex()) {
-    println(<span style="color: #b8bb26;">"</span><span style="color: #83a598;">$index</span><span style="color: #b8bb26;">: </span><span style="color: #83a598;">$element</span><span style="color: #b8bb26;">"</span>)
-}
-</code></pre>
-</div>
-
-<div class="org-src-container">
-
-<pre  class="src src-console"   ><code trim>0: null
-1: eins
-2: zwei
-3: drei
-</code></pre>
+<section id="slide-org543f3d6">
+<h3 id="org543f3d6"><span class="section-number-3">9.7.</span> Der &rsquo;in&rsquo; Operator</h3>
+<div class="outline-text-3" id="text-9-7">
 </div>
 </section>
-<section id="slide-orgbaad9e0">
-<h3 id="orgbaad9e0"><span class="section-number-3">9.8.</span> Der &rsquo;in&rsquo; Operator</h3>
-<div class="outline-text-3" id="text-9-8">
-</div>
-</section>
-<section id="slide-org9049661">
-<h4 id="org9049661"><span class="section-number-4">9.8.1.</span> Äquivalent zu x &gt;= start &amp;&amp; x &lt;= end</h4>
+<section id="slide-orgd412221">
+<h4 id="orgd412221"><span class="section-number-4">9.7.1.</span> Äquivalent zu x &gt;= start &amp;&amp; x &lt;= end</h4>
 <div class="org-src-container">
 
 <pre  class="src src-kotlin"   ><code trim><span style="color: #fb4934;">fun</span> <span style="color: #b8bb26;">istBuchstabe</span>(c: <span style="color: #fabd2f;">Char</span>) = c <span style="color: #fb4934;">in</span> <span style="color: #b8bb26;">'a'</span>..<span style="color: #b8bb26;">'z'</span> || c <span style="color: #fb4934;">in</span> <span style="color: #b8bb26;">'A'</span>..<span style="color: #b8bb26;">'Z'</span>
@@ -978,8 +1054,8 @@ istNichtZiffer(<span style="color: #b8bb26;">'q'</span>) <span style="color: #92
 </code></pre>
 </div>
 </section>
-<section id="slide-orgab76b45">
-<h3 id="orgab76b45"><span class="section-number-3">9.9.</span> Klappt auch in &rsquo;when&rsquo; branches</h3>
+<section id="slide-orgbe93eed">
+<h3 id="orgbe93eed"><span class="section-number-3">9.8.</span> Klappt auch in &rsquo;when&rsquo; branches</h3>
 <div class="org-src-container">
 
 <pre  class="src src-kotlin"   ><code trim><span style="color: #fb4934;">fun</span> <span style="color: #b8bb26;">ermittleTyp</span>(c: <span style="color: #fabd2f;">Char</span>) = <span style="color: #fb4934;">when</span> (c) {
@@ -991,35 +1067,18 @@ ermittleTyp(<span style="color: #b8bb26;">'x'</span>) <span style="color: #92837
 </code></pre>
 </div>
 </section>
-<section id="slide-org87ae351">
-<h3 id="org87ae351"><span class="section-number-3">9.10.</span> Ranges klappen für jeden Typ der java.lang.Comparable implementiert!</h3>
-<div class="org-src-container">
-
-<pre  class="src src-kotlin"   ><code trim><span style="color: #928374;">// </span><span style="color: #928374;">Alphabetische Sortierung</span>
-println(<span style="color: #b8bb26;">"Kotlin"</span> <span style="color: #fb4934;">in</span> <span style="color: #b8bb26;">"Java"</span>..<span style="color: #b8bb26;">"Scala"</span>)
-println(<span style="color: #b8bb26;">"Kotlin"</span> <span style="color: #fb4934;">in</span> setOf(<span style="color: #b8bb26;">"Java"</span>, <span style="color: #b8bb26;">"Scala"</span>))
-</code></pre>
-</div>
-
-<div class="org-src-container">
-
-<pre  class="src src-console"   ><code trim>true
-false
-</code></pre>
-</div>
-</section>
 </section>
 <section>
-<section id="slide-org80b83db">
-<h2 id="org80b83db"><span class="section-number-2">10.</span> Exceptions</h2>
+<section id="slide-org5ae091b">
+<h2 id="org5ae091b"><span class="section-number-2">10.</span> Exceptions</h2>
 <div class="outline-text-2" id="text-10">
 </div>
 </section>
-<section id="slide-org0e1a8d3">
-<h3 id="org0e1a8d3"><span class="section-number-3">10.1.</span> Eigentlich wie in Java, aber ohne checked Exceptions</h3>
+<section id="slide-orgcac3954">
+<h3 id="orgcac3954"><span class="section-number-3">10.1.</span> Eigentlich wie in Java, aber ohne checked Exceptions</h3>
 </section>
-<section id="slide-org7945cc5">
-<h3 id="org7945cc5"><span class="section-number-3">10.2.</span> try kann auch als Expression verwendet werden</h3>
+<section id="slide-org3766077">
+<h3 id="org3766077"><span class="section-number-3">10.2.</span> try kann auch als Expression verwendet werden</h3>
 <div class="org-src-container">
 
 <pre  class="src src-kotlin"   ><code trim><span style="color: #fb4934;">import</span> <span style="color: #b8bb26;">java.io.BufferedReader</span>
@@ -1037,13 +1096,13 @@ parseZahl(<span style="color: #fabd2f;">BufferedReader</span>(<span style="color
 </section>
 </section>
 <section>
-<section id="slide-orgbf33bfd">
-<h2 id="orgbf33bfd"><span class="section-number-2">11.</span> Collections</h2>
+<section id="slide-orga723c32">
+<h2 id="orga723c32"><span class="section-number-2">11.</span> Collections</h2>
 <div class="outline-text-2" id="text-11">
 </div>
 </section>
-<section id="slide-orgd9ff37c">
-<h3 id="orgd9ff37c"><span class="section-number-3">11.1.</span> Einfache Erstellung</h3>
+<section id="slide-orgec65e29">
+<h3 id="orgec65e29"><span class="section-number-3">11.1.</span> Einfache Erstellung</h3>
 <div class="org-src-container">
 
 <pre  class="src src-kotlin"   ><code trim><span style="color: #fb4934;">val</span> <span style="color: #83a598;">menge</span> = setOf(<span style="color: #d3869b; font-weight: bold;">1</span>, <span style="color: #d3869b; font-weight: bold;">2</span>, <span style="color: #d3869b; font-weight: bold;">3</span>)
@@ -1062,8 +1121,8 @@ parseZahl(<span style="color: #fabd2f;">BufferedReader</span>(<span style="color
 
 </aside>
 </section>
-<section id="slide-org4f6e41c">
-<h3 id="org4f6e41c"><span class="section-number-3">11.2.</span> Benutzung wurde erweitert</h3>
+<section id="slide-org02026b6">
+<h3 id="org02026b6"><span class="section-number-3">11.2.</span> Benutzung wurde erweitert</h3>
 <div class="org-src-container">
 
 <pre  class="src src-kotlin"   ><code trim><span style="color: #fb4934;">val</span> <span style="color: #83a598;">strings</span> = listOf(<span style="color: #b8bb26;">"eins"</span>, <span style="color: #b8bb26;">"zwei"</span>, <span style="color: #b8bb26;">"drei"</span>)
@@ -1081,8 +1140,8 @@ println(zahlen.maxOrNull())
 </code></pre>
 </div>
 </section>
-<section id="slide-orgb04e2c9">
-<h3 id="orgb04e2c9"><span class="section-number-3">11.3.</span> Extension Methods</h3>
+<section id="slide-orga115d4e">
+<h3 id="orga115d4e"><span class="section-number-3">11.3.</span> Extension Methods</h3>
 <div class="org-src-container">
 
 <pre  class="src src-java"   ><code trim><span style="color: #fb4934;">import</span> <span style="color: #d3869b;">java</span>.<span style="color: #d3869b;">util</span>.<span style="color: #fabd2f;">Optional</span>;
@@ -1121,6 +1180,23 @@ println(<span style="color: #b8bb26;">""</span>.lastChar())     <span style="col
 </ul>
 
 </aside>
+</section>
+</section>
+<section>
+<section id="slide-org645e8a6">
+<h2 id="org645e8a6"><span class="section-number-2">12.</span> Resourcen</h2>
+<ul>
+<li><a href="https://kotlinlang.org/">https://kotlinlang.org/</a></li>
+<li><a href="https://play.kotlinlang.org">https://play.kotlinlang.org</a></li>
+<li><a href="https://developer.android.com/courses/kotlin-bootcamp/overview">https://developer.android.com/courses/kotlin-bootcamp/overview</a></li>
+<li>Kotlin in Action (Quelle für diesen Vortrag)</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgaa43d41">
+<h2 id="orgaa43d41"><span class="section-number-2">13.</span> Fragen?</h2>
 </section>
 </section>
 </div>

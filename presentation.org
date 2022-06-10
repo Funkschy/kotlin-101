@@ -4,36 +4,101 @@
 #+REVEAL_THEME: solarized
 #+OPTIONS: toc:nil, timestamp:nil
 
-* Sachen zu erwähnen
-** Funktionale und OO Programmierung in einem
-** volle Java interop
-** default Android sprache
-** Null safety
-** DSL support
-** erweiterungen für java stdlib (extension methods generell)
-** in/ranges part zu lang
-** warum sollten java devs kotlin benutzen?
-*** NullPointerExceptions böse
-*** java = horror
-*** kotlin für weltfrieden
-*** convenience/weniger bloat
-*** perfekte Interoperabilität
-**** kotlin kann einfach als maven dependency in bestehendes java projekt
-** wie verbreitet ist die sprache?
-*** am Anfang etablieren
-** kann auch zu js/native compilen
-*** website
-*** playground
-
 * Dieser Vortrag
 ** Basiert auf "Kotlin in Action"
 [[./kotlin-in-action.jpg]]
 ** Speziell für Java Programmierer
+** Generiert aus Org Dokument
+- Fast alle Code Beispiele sind editierbar und ausführbar
+- Kann auch einfach als Text gelesen werden oder zu PDF generiert
+
+* Warum Kotlin?
+- Stabile und verbreitete Sprache
+- Eleganter und Kompakter Code
+- Keine NullPointerExceptions mehr
+- 100% interoperabel mit Java
+- Structured Concurrency (Coroutines)
+- Fullstack Development
+- Gute Wahl für die Provinzial
+
+#+BEGIN_NOTES
+- entwickelt von Jetbrains (Intellij), gepusht durch Google
+- default Sprache für Android development
+
+- Gute Mischung aus OOP und funktionaler Programmierung
+- DSL support (nicht im Vortrag)
+- Erweiterungen der Java stdlib für mehr Komfort
+
+- als ich noch bei Kosmos war: NullPointerExceptions häufigster Absturzgrund
+- nach Google: Android apps die Kotlin benutzen crashen im Schnitt 20% weniger!!
+
+- kann einfach als Dependency in bestehendes Maven/gradle Projekt
+- muss also nichtmal installiert werden
+
+- Concurrency ohne async await
+
+- Kotlin kann auch zu JS und nativem Code compilen
+
+- Gut für die Provi weil:
+- Relativ einfach für Java Programmierer zu lernen
+- deutliche Reduktion von Crashes in Produktion
+- verbesserte Entwickler Produktität
+- kann einfach in bestehende Projekte eingebaut werden
+#+END_NOTES
+
+** Zitat von developer.android.com/kotlin
+#+BEGIN_QUOTE
+"Write better Android apps faster with Kotlin. Kotlin is a modern statically typed programming language used by over 60% of professional Android developers that helps boost productivity, developer satisfaction, and code safety."
+#+END_QUOTE
+
+#+BEGIN_NOTES
+Schreib bessere Android apps schneller mit Kotlin. Kotlin ist eine moderne statisch typisierte
+Programmiersprache, die von mehr als 60% aller professionellen Android Entwickler benutzt wird
+und dabei hilft die Produktität, Entwickler Zufriedenheit und Code Sicherheit zu verbessern.
+#+END_NOTES
+
+** Beispiel von kotlinlang.org: Spring Boot
+#+begin_src kotlin
+@SpringBootApplication
+class DemoApplication
+
+@RestController
+class MessageResource {
+   @GetMapping
+   fun index(): List<Message> = listOf(
+      Message("1", "Hello!"),
+      Message("2", "Bonjour!"),
+      Message("3", "Privet!"),
+   )
+}
+
+data class Message(val id: String?, val text: String)
+#+end_src
+
+** Beispiel von kotlinlang.org: React
+#+begin_src kotlin
+import react.*
+import react.dom.*
+import kotlinx.html.js.onClickFunction
+
+val counter = functionalComponent<Props> {
+   val (count, setCount) = useState(0)
+   button {
+      attrs.onClickFunction = { setCount(count + 1) }
+      +count.toString()
+   }
+}
+#+end_src
 
 * Geschichte
 ** Jetbrains 2010
 ** IntelliJ Team war neidisch auf das Rider (C#) Team
 - "We were somewhat envious of our colleagues on the .NET team who were developing in C#, a modern, powerful, rapidly evolving language. But we didn’t see any language that we could use instead of Java"
+  #+BEGIN_NOTES
+  Wir waren ein bisschen neidisch auf unsere Kollegen im .NET team, die in C# entwickelt haben,
+  einer modernen, mächtigen und sich schnell entwickelnden Sprache.
+  Aber wir konnten keine andere Sprache finden die wir statt Java benutzen könnten.
+  #+END_NOTES
 ** Anforderungen an Kotlin
 - statisch typisiert
 - 100% Kompatibilität mit bestehenden Java Bibliotheken
@@ -590,20 +655,6 @@ F = 1000110
 - '..' kann auch ranges aus chars erstellen
 - (eins, zwei) Syntax packt key/value Paar aus
 #+END_NOTES
-** Nützlich falls man mit Index über eine Collection iterieren möchte
-#+begin_src kotlin
-val liste = arrayListOf("null", "eins", "zwei", "drei")
-for ((index, element) in liste.withIndex()) {
-    println("$index: $element")
-}
-#+end_src
-
-#+begin_src console
-0: null
-1: eins
-2: zwei
-3: drei
-#+end_src
 ** Der 'in' Operator
 *** Äquivalent zu x >= start && x <= end
 #+begin_src kotlin
@@ -621,17 +672,6 @@ fun ermittleTyp(c: Char) = when (c) {
     else -> "Keine Ahnung"
 }
 ermittleTyp('x') // Buchstabe
-#+end_src
-** Ranges klappen für jeden Typ der java.lang.Comparable implementiert!
-#+begin_src kotlin
-// Alphabetische Sortierung
-println("Kotlin" in "Java".."Scala")
-println("Kotlin" in setOf("Java", "Scala"))
-#+end_src
-
-#+begin_src console
-true
-false
 #+end_src
 * Exceptions
 ** Eigentlich wie in Java, aber ohne checked Exceptions
@@ -705,3 +745,9 @@ println("".lastChar())     // null
 - receiver wird zu this gebunden
 - geht auch mit properties (verhält sich dann wie ein Feld)
 #+END_NOTES
+* Resourcen
+- https://kotlinlang.org/
+- https://play.kotlinlang.org
+- https://developer.android.com/courses/kotlin-bootcamp/overview
+- Kotlin in Action (Quelle für diesen Vortrag)
+* Fragen?
