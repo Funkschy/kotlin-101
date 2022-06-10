@@ -1,0 +1,707 @@
+#+TITLE: Kotlin 101
+#+DATE: 13.06.2022
+#+REVEAL_REVEAL_JS_VERSION: 4
+#+REVEAL_THEME: solarized
+#+OPTIONS: toc:nil, timestamp:nil
+
+* Sachen zu erwähnen
+** Funktionale und OO Programmierung in einem
+** volle Java interop
+** default Android sprache
+** Null safety
+** DSL support
+** erweiterungen für java stdlib (extension methods generell)
+** in/ranges part zu lang
+** warum sollten java devs kotlin benutzen?
+*** NullPointerExceptions böse
+*** java = horror
+*** kotlin für weltfrieden
+*** convenience/weniger bloat
+*** perfekte Interoperabilität
+**** kotlin kann einfach als maven dependency in bestehendes java projekt
+** wie verbreitet ist die sprache?
+*** am Anfang etablieren
+** kann auch zu js/native compilen
+*** website
+*** playground
+
+* Dieser Vortrag
+** Basiert auf "Kotlin in Action"
+[[./kotlin-in-action.jpg]]
+** Speziell für Java Programmierer
+
+* Geschichte
+** Jetbrains 2010
+** IntelliJ Team war neidisch auf das Rider (C#) Team
+- "We were somewhat envious of our colleagues on the .NET team who were developing in C#, a modern, powerful, rapidly evolving language. But we didn’t see any language that we could use instead of Java"
+** Anforderungen an Kotlin
+- statisch typisiert
+- 100% Kompatibilität mit bestehenden Java Bibliotheken
+- Tooling Qualität und hohe Entwickler Produktivität
+- Leicht zu lernen und verstehen
+- Selbe performance with Java
+** Name: Insel vor St. Petersburg
+* Einfaches Beispiel
+
+#+begin_src kotlin
+data class Person (val name: String,
+                   val age: Int? = null)
+
+fun main() {
+    val people = listOf(
+        Person("Alice"),
+        Person("Bob", age = 30)
+    )
+
+    val oldest = people.maxByOrNull { it.age ?: 0 }
+    println("Die älteste Person ist: $oldest")
+}
+
+main()
+#+end_src
+
+#+BEGIN_NOTES
+- Interessante Eigenschaften im Beispiel
+- data class (wie Java 14 records)
+- implementieren toString, equals, hashCode, getter (& setter) automatisch
+
+- val = final
+
+- nullable Int
+- Kotlin ist komplett null-safe -> keine NullPointerExceptions
+- wenn man null braucht: Compiler check of man auf null geprüft hat
+- mehr dazu später
+
+- top level Funktion -> wird zu statischer methode compiled
+- kein Semikolon
+- benannte (optionale) Argumente (age=)
+- Lambda Block
+- Elvis operator
+- it.age ?: 0 <=> (it.age == null) ? 0 : it.age
+#+END_NOTES
+
+
+* Exkurs: Funktionale Programmierung
+** Konzepte
+*** First-class Funktionen
+- Funktionen können als Parameter übergeben werden
+- Funktionen können als Rückgabewert benutzt werden
+*** Immutability
+**** Objekte können nicht verändert werden (nur getter, keine setter)
+**** Vorteile
+- deutlich einfacher zu handhaben -> Zustand spielt keine Rolle
+- einfacher zu testen
+- einfacher zu multithreaden -> keine Mutexe oder sonstige Synchronisation
+*** Keine Seiteneffekte
+- Funktionen sollten pur sein -> bei Aufruf mit den selben Parametern immer das selbe Ergebnis
+- Funktionen verändern nichts am Zustand der Anwendung
+** Kotlin ist wesentlich fokussierter auf funktionale Programmierung als Java
+- Java hat stream API, aber die Collections selber sind mutable
+- Lambdas/Funktions Typen sind deutlich angenehmer in kotlin
+- alle Collections in Kotlin sind dafür gebaut funktional benutzt zu werden (z.B. maxByOrNull)
+** Aber: Kotlin erzwingt keine funktionale Programmierung
+- OOP oder imperativer code lässt sich genauso schreiben wie in Java wenn gewünscht
+- das macht Kotlin zu einer guten Einstiegssprache um funktionale Konzepte zu lernen
+
+* Basics
+** Funktionen und Variablen
+#+begin_src kotlin
+fun main(args: Array<String>) {
+    println("Hello World")
+}
+#+end_src
+
+#+BEGIN_NOTES
+- Was können wir hier schon über die Sprache lernen?
+- fun keyword um Funktionen zu deklarieren
+- Typ nach dem Namen
+- top level Funktionen
+- Arrays sind nur Klassen, keine spezielle Syntax
+- viele wrapper für die stdlib mit vereinfachter Syntax, wie z.B. println
+- Semicolon optional
+#+END_NOTES
+
+** Weiteres Beispiel
+#+begin_src kotlin
+fun max(a: Int, b: Int): Int {
+    return if (a > b) a else b
+}
+
+max(1, 2)
+#+end_src
+
+- return type nach Parameter Liste
+- if expression anstatt ternary: (a > b) ? a : b
+
+** Kann sogar vereinfacht werden
+#+begin_src kotlin
+
+fun max(a: Int, b: Int) = if (a > b) a else b
+
+max(1, 2)
+
+#+end_src
+
+** Variablen
+*** Format: (val|var) Name(: Typ) = Wert
+#+begin_src kotlin
+val frage = "Die ultimative Frage nach dem Leben," +
+"dem Universum und dem ganzen Rest"
+val antwort = 42
+
+// alternativ
+val antwort: Int = 42
+#+end_src
+
+#+BEGIN_NOTES
+- default type für ints ist Int
+#+END_NOTES
+
+*** Im Normalfall immer alles val(ue) machen
+*** falls var(iablen) benötigt werden:
+#+begin_src kotlin
+var message = "test"
+message = "reassigned"
+
+message
+#+end_src
+*** val != immutable
+#+begin_src kotlin
+val sprachen = arrayListOf("Java", "Clojure", "Scala")
+sprachen.add("Kotlin")
+
+sprachen.joinToString(", ")
+#+end_src
+
+#+begin_src console
+Java, Clojure, Scala, Kotlin
+#+end_src
+
+*** Kotlin verwendet aber normalerweise immutable Datenstrukturen
+#+begin_src kotlin
+val sprachen = listOf("Java", "Clojure", "Scala")
+sprachen.add("Kotlin") // compile Fehler (keine add Methode)
+
+sprachen.joinToString(", ")
+#+end_src
+
+** String templating
+#+begin_src kotlin
+
+fun main(args: Array<String>) {
+    val name = if (args.size > 0) {
+        args[0]
+    } else {
+        "Anonymous user"
+    }
+    println("Hello, $names!") // <=> "Hello, " + name + "!"
+}
+#+end_src
+
+#+BEGIN_NOTES
+- für s am ende von name(s) -> ${name}s
+#+END_NOTES
+
+#+begin_src kotlin
+
+fun main(args: Array<String>) {
+    // <=> "Hello, " + (args.length > 0) ? args[0] : "Anonymous user"  + "!"
+    println("Hello, ${if (args.size > 0) args[0] else "Anonymous user"}!")
+}
+#+end_src
+** Objektorientierung
+*** Java Klasse
+#+begin_src java
+public class Person {
+    private final String name; // in echt natürlich nicht final!
+    private boolean verheiratet;
+
+    public Person(String name, boolean verheiratet) {
+        this.name = name;
+        this.verheiratet = verheiratet;
+    }
+
+    public Person(String name) {
+        this(name, false);
+    }
+
+    // > 30 Zeilen getter/setter/toString/hashCode/equals
+}
+#+end_src
+
+*** Java Aufruf
+#+begin_src java
+public static void printStatus(Person person) {
+    var infix = (person.isVerheiratet())
+        ? ""
+        : "nicht ";
+    System.out.println(person.getName()
+                       + " ist "
+                       + infix
+                       + "verheiratet"
+                       );
+}
+
+#+end_src
+#+begin_src java
+public static void main(String[] args) {
+    var person = new Person("Bob", false);
+    printStatus(person);
+    person.setVerheiratet(true);
+    printStatus(person);
+}
+#+end_src
+
+*** Kotlin ohne Accessor
+#+begin_src kotlin
+data class Person(val name: String,
+                  var isVerheiratet: Boolean = false)
+
+fun printStatus(person: Person) {
+    // ruft tatsächlich getter auf
+    val infix = if (person.isVerheiratet) "" else " nicht"
+    println("${person.name} ist$infix verheiratet")
+}
+
+val person = Person("Bob", isVerheiratet = false)
+printStatus(person)
+person.isVerheiratet = true // ruft tatsächlich setter auf!
+printStatus(person)
+#+end_src
+
+#+begin_src console
+Bob ist nicht verheiratet
+Bob ist verheiratet
+#+end_src
+
+*** Kotlin mit Accessor
+#+begin_src kotlin
+class Person(val name: String,
+             private var verheiratet: Boolean = false) {
+
+    var isVerheiratet: Boolean
+        get() {
+            println("isVerheiratet hat wert $verheiratet")
+            return verheiratet
+        }
+        set(value) {
+            println("verheiratet = $value")
+            verheiratet = value
+        }
+}
+#+end_src
+
+#+begin_src kotlin
+val person = Person("Bob", false)
+printStatus(person)
+person.isVerheiratet = true // ruft tatsächlich setter auf!
+printStatus(person)
+#+end_src
+
+#+begin_src console
+isVerheiratet hat wert false
+Bob ist nicht verheiratet
+verheiratet = true
+isVerheiratet hat wert true
+Bob ist verheiratet
+#+end_src
+
+*** Accessor können auch Werte berechnen
+#+begin_src kotlin
+class Rechteck(val breite: Int, val hoehe: Int) {
+    val isQuadrat: Boolean
+        get() = breite == hoehe
+}
+
+println(Rechteck(20, 20).isQuadrat) // true
+println(Rechteck(30, 20).isQuadrat) // false
+#+end_src
+
+#+BEGIN_NOTES
+- Generiert einen isQuadrat getter, der auch aus Java gerufen werden kann
+#+END_NOTES
+* Code Struktur (Pakete und Ordner)
+** package/import Statements
+#+begin_src kotlin
+package geometrie.formen
+
+import java.util.Random
+
+class Rechteck(val breite: Int, val hoehe: Int) {
+    val isQuadrat: Boolean
+        get() = breite == hoehe
+}
+
+fun zufaelligesRechteck(): Rechteck {
+    val random = Random()
+    return Rechteck(random.nextInt(), random.nextInt())
+}
+
+println(zufaelligesRechteck().isQuadrat)
+#+end_src
+
+** Package vs Ordner
+#+CAPTION: In Java müssen packages die Ordner Struktur reflektieren
+[[./java-packages.png]]
+
+#+CAPTION: In Kotlin ist das nicht der Fall
+[[./kotlin-packages.png]]
+
+* Entscheidungen: enums & when
+** Enums wie in Java
+#+begin_src kotlin
+enum class Farbe {
+    ROT, ORGANGE, GELB, GRUEN, BLAU
+}
+#+end_src
+
+** Können auch Felder haben
+#+begin_src kotlin
+enum class Farbe (val r: Int, val g: Int, val b: Int) {
+    ROT(255, 0, 0),
+    ORANGE(255, 165, 0),
+    GELB(255, 255, 0),
+    GRUEN(0, 255, 0),
+    VIOLET(238, 130, 238),
+    BLAU(0, 0, 255);
+
+    fun rgb() = (r * 256 + g) * 256 + b
+}
+
+Farbe.ORANGE.rgb()
+#+end_src
+
+** 'when' in Kombination mit enums
+*** when ist wie switch auf Steroiden
+#+begin_src kotlin
+fun getBeispielPflanze(farbe: Farbe) = when (farbe) {
+    Farbe.ROT -> "Tomate"
+    Farbe.ORANGE -> "Orange"
+    Farbe.GELB -> "Banane"
+    Farbe.GRUEN -> "Kiwi"
+    Farbe.VIOLET -> "Feige"
+    // Compilefehler wenn nicht alle möglichen Werte
+    // abgefragt werden
+    // Farbe.BLAU -> "Blaubeere"
+}
+#+end_src
+
+*** Bedingungen können mit ',' verbunden werden
+#+begin_src kotlin
+fun getWaerme(farbe: Farbe) = when (farbe) {
+    Farbe.ROT, Farbe.ORANGE, Farbe.GELB -> "warm"
+    Farbe.GRUEN -> "neutral"
+    Farbe.BLAU, Farbe.VIOLET -> "kalt"
+}
+#+end_src
+*** 'when' funktioniert aber mit allen Objekten
+#+begin_src kotlin
+fun mix(f1: Farbe, f2: Farbe) = when(setOf(f1, f2)) {
+    setOf(Farbe.ROT, Farbe.GELB) -> Farbe.ORANGE
+    setOf(Farbe.GELB, Farbe.BLAU) -> Farbe.GRUEN
+    else -> throw Exception(
+        "Farben $f1 und $f2 können nicht vermischt werden"
+    )
+}
+
+mix(Farbe.BLAU, Farbe.GELB)
+#+end_src
+#+BEGIN_NOTES
+- argument für when kann jedes Objekt sein
+- werden von oben nach unten mit equals verglichen
+- else falls nix vorher matcht
+#+END_NOTES
+*** 'when' klappt auch ohne Argument
+#+begin_src kotlin
+fun mixPerformant(f1: Farbe, f2: Farbe) = when {
+    (f1 == Farbe.ROT && f2 == Farbe.GELB)
+    || (f1 == Farbe.GELB && f2 == Farbe.ROT)-> Farbe.ORANGE
+
+    (f1 == Farbe.GELB && f2 == Farbe.BLAU)
+    || (f1 == Farbe.BLAU && f2 == Farbe.GELB)-> Farbe.GRUEN
+
+    else -> throw Exception(
+        "Farben $f1 und $f2 können nicht vermischt werden"
+    )
+}
+
+mixPerformant(Farbe.BLAU, Farbe.GELB)
+#+end_src
+#+BEGIN_NOTES
+- wenn kein Argument übergeben wird, ist die branch condition ein beliebiger boolean ausdruck
+- fancy if-else
+#+END_NOTES
+** Smart casts
+*** Kombination von Type Check und Cast
+*** Beispiel: Simpler Interpreter
+#+begin_src kotlin
+interface Expr
+class Zahl(val wert: Int): Expr
+class Plus(val links: Expr, val rechts: Expr): Expr
+#+end_src
+
+#+BEGIN_NOTES
+- leeres interface
+- 2 beliebige Expressions können summiert werden
+#+END_NOTES
+*** Simpler AST
+#+begin_src kotlin
+Plus(Plus(Zahl(1), Zahl(2)), Zahl(4))
+#+end_src
+#+CAPTION: Ausdruck als Baum
+[[./tree.png]]
+*** Evaluierung ohne when
+#+begin_src kotlin
+fun eval(e: Expr): Int {
+    if (e is Zahl) {
+        // dieser cast ist redundant
+        val n = e as Zahl
+        return n.wert
+    }
+    if (e is Plus) {
+        // direkter Zugriff auf Felder nach 'is'
+        return eval(e.links) + eval(e.rechts)
+    }
+    throw IllegalArgumentException("Unbekannter Ausdruck")
+}
+eval(Plus(Plus(Zahl(1), Zahl(2)), Zahl(4)))
+#+end_src
+
+#+BEGIN_NOTES
+- Nach Vergleich mit 'is' wird das Objekt automatisch gecastet
+- sonst funktioniert 'is' wie 'instanceof'
+#+END_NOTES
+*** Schönere Lösung mit 'when'
+#+begin_src kotlin
+fun eval(e: Expr): Int = when(e) {
+    is Zahl -> e.wert
+    is Plus -> eval(e.links) + eval(e.rechts)
+    else -> throw IllegalArgumentException(
+        "Unbekannter Ausdruck"
+    )
+}
+eval(Plus(Plus(Zahl(1), Zahl(2)), Zahl(4)))
+#+end_src
+*** Eval branches können auch Blöcke sein
+#+begin_src kotlin
+fun evalMitLog(e: Expr): Int = when(e) {
+    is Zahl -> {
+        println("Zahl: ${e.wert}")
+        e.wert
+    }
+    is Plus -> {
+        val links = evalMitLog(e.links)
+        val rechts = evalMitLog(e.rechts)
+        println("$links + $rechts")
+        links + rechts
+    }
+    else -> throw IllegalArgumentException(
+        "Unbekannter Ausdruck"
+    )
+}
+#+end_src
+#+begin_src kotlin
+evalMitLog(Plus(Plus(Zahl(1), Zahl(2)), Zahl(4)))
+#+end_src
+
+#+begin_src console
+Zahl: 1
+Zahl: 2
+1 + 2
+Zahl: 4
+3 + 4
+#+end_src
+
+#+BEGIN_NOTES
+- Blöcke in Kotlin sind auch Expressions
+#+END_NOTES
+* Iterieren: 'while' und 'for'
+** while genau wie in Java
+#+begin_src kotlin
+var i = 0
+while (i < 10) {
+    println(i)
+    i++
+}
+#+end_src
+** for basiert auf Iterators
+** Iterator über aufeinanderfolgende Zahlen: range
+#+begin_src kotlin
+// 10 inklusive
+val einsBisZehn = 1..10
+// 10 ausgeschlossen
+val einsBisNeun = 1 until 10
+#+end_src
+** for Schleife mit Range
+#+begin_src kotlin
+fun fizzBuzz (i: Int) = when {
+    i % 15 == 0 -> "FizzBuzz"
+    i % 3 == 0 -> "Fizz"
+    i % 5 == 0 -> "Buzz"
+    else -> "$i"
+}
+
+for (i in 1..20) {
+    print("${fizzBuzz(i)} ")
+}
+#+end_src
+
+#+begin_src console
+1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz 16 17 Fizz 19 Buzz
+#+end_src
+
+** Kann auch andere Schrittweite als +1
+#+begin_src kotlin
+for (i in 100 downTo 1 step 2) {
+    print("${fizzBuzz(i)} ")
+}
+#+end_src
+
+#+BEGIN_NOTES
+- [100, 2]
+#+END_NOTES
+** Funktioniert auch mit anderen Daten als Int Ranges
+#+begin_src kotlin
+import java.util.TreeMap
+
+// treemap ist ähnlich wie HashMap aber sortiert
+val binaerDarstellungen = TreeMap<Char, String>()
+
+for (c in 'A'..'F') {
+    binaerDarstellungen[c] = Integer.toBinaryString(c.toInt())
+}
+
+for ((buchstabe, binaer) in binaerDarstellungen) {
+    println("$buchstabe = $binaer")
+}
+
+#+end_src
+
+#+begin_src console
+A = 1000001
+B = 1000010
+C = 1000011
+D = 1000100
+E = 1000101
+F = 1000110
+#+end_src
+
+#+BEGIN_NOTES
+- '..' kann auch ranges aus chars erstellen
+- (eins, zwei) Syntax packt key/value Paar aus
+#+END_NOTES
+** Nützlich falls man mit Index über eine Collection iterieren möchte
+#+begin_src kotlin
+val liste = arrayListOf("null", "eins", "zwei", "drei")
+for ((index, element) in liste.withIndex()) {
+    println("$index: $element")
+}
+#+end_src
+
+#+begin_src console
+0: null
+1: eins
+2: zwei
+3: drei
+#+end_src
+** Der 'in' Operator
+*** Äquivalent zu x >= start && x <= end
+#+begin_src kotlin
+fun istBuchstabe(c: Char) = c in 'a'..'z' || c in 'A'..'Z'
+fun istNichtZiffer(c: Char) = c !in '0'..'9'
+
+istBuchstabe('q') // true
+istNichtZiffer('q') // true
+#+end_src
+** Klappt auch in 'when' branches
+#+begin_src kotlin
+fun ermittleTyp(c: Char) = when (c) {
+    in '0'..'9' -> "Ziffer"
+    in 'a'..'z', in 'A'..'Z' -> "Buchstabe"
+    else -> "Keine Ahnung"
+}
+ermittleTyp('x') // Buchstabe
+#+end_src
+** Ranges klappen für jeden Typ der java.lang.Comparable implementiert!
+#+begin_src kotlin
+// Alphabetische Sortierung
+println("Kotlin" in "Java".."Scala")
+println("Kotlin" in setOf("Java", "Scala"))
+#+end_src
+
+#+begin_src console
+true
+false
+#+end_src
+* Exceptions
+** Eigentlich wie in Java, aber ohne checked Exceptions
+** try kann auch als Expression verwendet werden
+#+begin_src kotlin
+import java.io.BufferedReader
+import java.io.StringReader
+
+fun parseZahl(reader: BufferedReader) = try {
+    Integer.parseInt(reader.readLine())
+} catch (e: NumberFormatException) {
+    null
+}
+
+parseZahl(BufferedReader(StringReader("keine Zahl")))
+#+end_src
+* Collections
+** Einfache Erstellung
+#+begin_src kotlin
+val menge = setOf(1, 2, 3)
+val liste = listOf(1, 2, 3)
+val map   = mapOf(1 to "one", 2 to "two", 3 to "three")
+#+end_src
+
+#+BEGIN_NOTES
+- normale Java collections!
+- komplett interoperabel
+- to ist eine normale Funktion (man kann auch eigene infix Funktionen machen)
+#+END_NOTES
+** Benutzung wurde erweitert
+#+begin_src kotlin
+val strings = listOf("eins", "zwei", "drei")
+println(strings.lastOrNull())
+
+val zahlen = setOf(1, 42, 2)
+println(zahlen.maxOrNull())
+#+end_src
+
+#+begin_src console
+drei
+42
+#+end_src
+** Extension Methods
+#+begin_src java
+import java.util.Optional;
+
+public static Optional<Character> lastChar(String s) {
+    if (s == null || s.length() == 0) {
+        return Optional.empty();
+    }
+    return Optional.of(s.charAt(s.length() - 1));
+}
+
+public static void main(String args[]) {
+    System.out.println(lastChar("test")); // Optional.of('t')
+    System.out.println(lastChar(""));     // Optional.empty()
+}
+#+end_src
+
+#+begin_src kotlin
+fun String.lastChar() = getOrNull(length - 1)
+
+println("test".lastChar()) // 't'
+println("".lastChar())     // null
+#+end_src
+
+#+BEGIN_NOTES
+- kleiner Abstecher weil viele der Methoden auf Kotlin collections so funktionieren
+- wird zu statischer method compiled -> kein Zugriff auf private member
+- erstes Argument ist receiver (hier string)
+- receiver wird zu this gebunden
+- geht auch mit properties (verhält sich dann wie ein Feld)
+#+END_NOTES
