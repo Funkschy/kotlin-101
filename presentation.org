@@ -11,6 +11,11 @@
 ** Generiert aus Org Dokument
 - Fast alle Code Beispiele sind editierbar und ausführbar
 - Kann auch einfach als Text gelesen werden oder zu PDF generiert
+** Sehr Code lastig
+#+BEGIN_NOTES
+- fast alle Folien haben Code
+- nur am Anfang ein paar Stichpunkte
+#+END_NOTES
 
 * Warum Kotlin?
 - Stabile und verbreitete Sprache
