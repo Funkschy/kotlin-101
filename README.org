@@ -1,0 +1,8 @@
+#+title: Kotlin 101
+
+Eine Einführung in Kotlin für den Pool Day
+
+* Aufbau
+
+Die Presentation selber ist komplett in org mode geschrieben und befindet sich in der presentation.org Datei.
+Aus dieser org Datei wurde mittles [[https://github.com/yjwen/org-reveal][Org reval]] die presentation.html Datei generiert. Diese kann einfach normal in einem Browser geöffnet und betrachtet werden.
